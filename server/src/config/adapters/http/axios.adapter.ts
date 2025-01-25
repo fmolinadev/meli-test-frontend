@@ -1,3 +1,7 @@
+/**
+ * @author Francisco Molina <franciscomolina.dev@gmail.com>
+ */
+
 import axios, { AxiosInstance } from "axios";
 import { HttpAdapter } from "./http.adapter";
 
