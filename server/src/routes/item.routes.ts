@@ -3,12 +3,15 @@
  */
 
 import { Router } from "express";
-import getSearchItemsController from "../controller/items-result.controller";
-import getProductByIdController from "../controller/items-by-id.controller";
+import {
+  getProductByIdController,
+  getSearchItemsController,
+} from "../controller";
+import { loggerMiddleware } from "../middleware";
 
 const itemRouter = Router();
 
-itemRouter.get("/", getSearchItemsController);
-itemRouter.get("/:id", getProductByIdController);
+itemRouter.get("/", loggerMiddleware, getSearchItemsController);
+itemRouter.get("/:id", loggerMiddleware, getProductByIdController);
 
 export default itemRouter;
