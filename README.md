@@ -39,6 +39,19 @@ npm install
 npm run dev
 
 ```
+#### Variables de entorno:
+
+Se debe crear un archivo .env y definir las siguientes variables:
+
+```bash
+PORT=3002
+
+SEARCH_ITEM_API=https://api.mercadolibre.com/sites/MLA
+
+VIEW_ITEM_API=https://api.mercadolibre.com/items
+
+```
+
 ### Para instalar dependencias del cliente
 
 ```bash
