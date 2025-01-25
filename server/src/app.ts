@@ -1,3 +1,7 @@
+/**
+ * @author Francisco Molina <franciscomolina.dev@gmail.com>
+ */
+
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
