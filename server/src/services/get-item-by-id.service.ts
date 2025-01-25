@@ -2,8 +2,11 @@
  * @author Francisco Molina <franciscomolina.dev@gmail.com>
  */
 import { itemFetcher } from "../config/adapters/item-details";
-import { ItemDescription, ItemDetail } from "../infraestructure/interfaces";
-import ItemViewDetails from "../infraestructure/interfaces/item.view-details.interface";
+import {
+  ItemDescription,
+  ItemDetail,
+  ItemViewDetails,
+} from "../infraestructure/interfaces";
 
 export const getItemByIdService = async (id: string) => {
   try {
