@@ -20,9 +20,7 @@ interface Item {
   description: string;
 }
 
-interface ItemViewDetails {
+export interface ItemViewDetails {
   author: Author;
   item: Item;
 }
-
-export default ItemViewDetails;
