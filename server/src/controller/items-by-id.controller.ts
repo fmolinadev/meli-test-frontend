@@ -5,7 +5,7 @@
 import { Request, Response } from "express";
 import { getItemByIdService } from "../services";
 
-const getProductByIdController = async (
+export const getProductByIdController = async (
   req: Request,
   res: Response
 ): Promise<void> => {
@@ -25,5 +25,3 @@ const getProductByIdController = async (
     });
   }
 };
-
-export default getProductByIdController;

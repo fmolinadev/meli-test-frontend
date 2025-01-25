@@ -5,7 +5,7 @@
 import { Request, Response } from "express";
 import { getItemsResultService } from "../services";
 
-const getSearchItemsController = async (
+export const getSearchItemsController = async (
   req: Request,
   res: Response
 ): Promise<void> => {
@@ -24,5 +24,3 @@ const getSearchItemsController = async (
     res.status(500).json({ error: "Server Error" });
   }
 };
-
-export default getSearchItemsController;
