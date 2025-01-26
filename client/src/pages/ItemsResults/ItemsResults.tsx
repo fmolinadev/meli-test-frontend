@@ -1,12 +1,41 @@
-import { useLocation } from "react-router-dom";
+/**
+ * @author Francisco Molina <franciscomolina.dev@gmail.com>
+ */
+
+import { useSearchContext } from "../../context/useSearch.context";
+import { EmpyLayout, ResultLayout } from "../../layout";
+import { EmptyState, Item, LoadingSpinn } from "../../presentation";
 
 export const ItemsResults = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const searchQuery = queryParams.get("search");
+  const { currentResult, isLoading, error, searchData } = useSearchContext();
+
+  if (isLoading) {
+    return <LoadingSpinn />;
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h1>Error: {error.message}</h1>
+      </div>
+    );
+  }
+
+  if (searchData && searchData.items.length > 0) {
+    return (
+      <div>
+        <ResultLayout>
+          {searchData.items.map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </ResultLayout>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h1>Resultados para: {searchQuery}</h1>
-    </div>
+    <EmpyLayout>
+      <EmptyState searchTermos={currentResult} />
+    </EmpyLayout>
   );
 };

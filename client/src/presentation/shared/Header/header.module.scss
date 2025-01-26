@@ -1,9 +1,9 @@
-$header-background: #ffe600;
+@import "../../../styles/branding.scss";
 
 .header-container {
   display: flex;
   width: 100vw;
-  background-color: $header-background;
+  background-color: $primary-color;
   height: 70px;
   justify-content: center;
 

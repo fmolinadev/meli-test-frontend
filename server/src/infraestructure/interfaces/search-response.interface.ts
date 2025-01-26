@@ -7,13 +7,22 @@ export interface SearchResponse {
   items: {
     id: string;
     title: string;
+    store: string;
     price: {
       currency: string;
       amount: number;
       decimals: number;
+      original_price: number | undefined;
+      discount: number | undefined;
     };
-    picture: string;
+
+    thumbnail: string;
+    cover: string;
     condition: string;
     free_shipping: boolean;
+    location: {
+      city: string;
+      state: string;
+    };
   }[];
 }
