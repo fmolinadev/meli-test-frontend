@@ -1,0 +1,40 @@
+@import "../../../styles/branding.scss";
+
+.breadcrumbs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 60px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+
+  span {
+  text-decoration: none;
+  color: $text-disclaim-color;
+  font-weight: normal;
+  font-size: 0.9rem;
+
+  :hover {
+  text-decoration: underline;
+  }
+ 
+}
+
+.separator {
+  margin: 0 8px;
+  color: $border-color;
+}
+
+.active {
+  font-weight: bold;
+  color: #000;
+}
+
+}
+
+
+

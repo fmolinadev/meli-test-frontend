@@ -1,17 +1,16 @@
-import { useSearchContext } from "../../context/useSearch.context";
-import { ResultLayout } from "../../layout/Results/ResultLayout";
+/**
+ * @author Francisco Molina <franciscomolina.dev@gmail.com>
+ */
 
-import { Item, Loader } from "../../presentation";
+import { useSearchContext } from "../../context/useSearch.context";
+import { EmpyLayout, ResultLayout } from "../../layout";
+import { EmptyState, Item, LoadingSpinn } from "../../presentation";
 
 export const ItemsResults = () => {
   const { currentResult, isLoading, error, searchData } = useSearchContext();
 
   if (isLoading) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
+    return <LoadingSpinn />;
   }
 
   if (error) {
@@ -25,7 +24,6 @@ export const ItemsResults = () => {
   if (searchData && searchData.items.length > 0) {
     return (
       <div>
-        <h1>Resultados para: {currentResult}</h1>
         <ResultLayout>
           {searchData.items.map((item) => (
             <Item key={item.id} item={item} />
@@ -36,11 +34,8 @@ export const ItemsResults = () => {
   }
 
   return (
-    <div>
-      <h1>No se encontraron resultados para: {currentResult}</h1>
-      <div>
-        <p>Empty state</p>
-      </div>
-    </div>
+    <EmpyLayout>
+      <EmptyState searchTermos={currentResult} />
+    </EmpyLayout>
   );
 };
