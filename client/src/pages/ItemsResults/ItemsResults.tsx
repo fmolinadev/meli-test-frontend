@@ -1,12 +1,44 @@
-import { useLocation } from "react-router-dom";
+import { useSearchContext } from "../../context/useSearch.context";
+import { Item, Loader } from "../../presentation";
 
 export const ItemsResults = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const searchQuery = queryParams.get("search");
+  const { currentResult, isLoading, error, searchData } = useSearchContext();
+
+  if (isLoading) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h1>Error: {error.message}</h1>
+      </div>
+    );
+  }
+
+  if (searchData && searchData.items.length > 0) {
+    return (
+      <div>
+        <h1>Resultados para: {currentResult}</h1>
+        <ul>
+          {searchData.items.map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <h1>Resultados para: {searchQuery}</h1>
+      <h1>No se encontraron resultados para: {currentResult}</h1>
+      <div>
+        <p>Empty state</p>
+      </div>
     </div>
   );
 };
