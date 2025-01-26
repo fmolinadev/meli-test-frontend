@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styles from "./searchBar.module.scss";
+import { useNavigate } from "react-router-dom";
 import { SearchIcon } from "../../../assets";
+import styles from "./searchBar.module.scss";
 
 interface Props {
   onSearch: (query: string) => void;
@@ -12,19 +13,24 @@ export const Searchbar: React.FC<Props> = ({
   placeholder = "Nunca dejes de buscar...",
 }) => {
   const [query, setQuery] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (query !== "" && e.key === "Enter") {
       onSearch(query);
+      navigate(`/items?search=${query}`);
     }
   };
 
   const handleSearchClick = () => {
-    onSearch(query);
+    if (query !== "") {
+      onSearch(query);
+      navigate(`/items?search=${query}`);
+    }
   };
 
   return (

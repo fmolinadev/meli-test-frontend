@@ -1,6 +1,6 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import { ErrorPage, HomePage, ItemDetail, ItemsResults } from "../pages";
-import { AppLayout } from "../layout/AppLayout";
+import { AppLayout } from "../layout";
 
 const LayoutWrapper = () => (
   <AppLayout>
