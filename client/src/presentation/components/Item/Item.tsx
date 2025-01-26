@@ -1,14 +1,18 @@
 import { Items } from "../../../interface";
-
+import styles from "./item.module.scss";
 interface Props {
   item: Items;
 }
 
 export const Item = ({ item }: Props) => {
   return (
-    <article>
+    <article className={styles["item-container"]}>
       <figure>
-        <img src={item.picture} alt={`Imagen de ${item.title}`} />
+        <img
+          className={styles["cover"]}
+          src={item.cover}
+          alt={`Imagen de ${item.title}`}
+        />
       </figure>
       <div>
         <div>

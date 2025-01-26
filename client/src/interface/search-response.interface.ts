@@ -9,7 +9,8 @@ export interface Items {
     original_price: number | undefined;
     discount: number | undefined;
   };
-  picture: string;
+  thumbnail: string;
+  cover: string;
   condition: string;
   free_shipping: boolean;
   location: {

@@ -1,4 +1,6 @@
 import { useSearchContext } from "../../context/useSearch.context";
+import { ResultLayout } from "../../layout/Results/ResultLayout";
+
 import { Item, Loader } from "../../presentation";
 
 export const ItemsResults = () => {
@@ -24,11 +26,11 @@ export const ItemsResults = () => {
     return (
       <div>
         <h1>Resultados para: {currentResult}</h1>
-        <ul>
+        <ResultLayout>
           {searchData.items.map((item) => (
             <Item key={item.id} item={item} />
           ))}
-        </ul>
+        </ResultLayout>
       </div>
     );
   }
