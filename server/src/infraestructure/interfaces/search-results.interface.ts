@@ -184,7 +184,7 @@ interface PathFromRoot {
   name: string;
 }
 
-interface AvailableFilter {
+export interface AvailableFilter {
   id: string;
   name: string;
   type: string;
