@@ -1,12 +1,20 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { ErrorPage, HomePage, ItemDetail, ItemsResults } from "../pages";
-import { AppLayout } from "../layout";
+import { AppLayout, HomeLayout } from "../layout";
 
-const LayoutWrapper = () => (
-  <AppLayout>
-    <Outlet />
-  </AppLayout>
-);
+const LayoutWrapper = () => {
+  const location = useLocation();
+  const isHomeRoute = location.pathname === "/";
+  return isHomeRoute ? (
+    <HomeLayout>
+      <Outlet />
+    </HomeLayout>
+  ) : (
+    <AppLayout>
+      <Outlet />
+    </AppLayout>
+  );
+};
 
 export function AppRouter() {
   return (

@@ -1,7 +1,36 @@
+import { MercadoPlay, ShippingBox, Slider } from "../../presentation";
+import styles from "./home.module.scss";
+
+import sliderImage1 from "../../assets/images/slider/slider-0.png";
+import sliderImage2 from "../../assets/images/slider/slider-1.png";
+import sliderImage3 from "../../assets/images/slider/slider-2.png";
+import sliderImage4 from "../../assets/images/slider/slider-3.png";
+import sliderImage5 from "../../assets/images/slider/slider-4.png";
+
 export const HomePage = () => {
+  const sliderImages = [
+    sliderImage1,
+    sliderImage2,
+    sliderImage3,
+    sliderImage4,
+    sliderImage5,
+  ];
+
   return (
     <div>
-      <h1>Home</h1>
+      <Slider auto speed={4000}>
+        {sliderImages.map((image, index) => (
+          <div key={index} className={styles["slider-container"]}>
+            <img src={image} alt={`Slider ${index}`} />
+          </div>
+        ))}
+      </Slider>
+      <div className={styles["center-home-placement"]}>
+        {/* //TODO: Favoritos aca */}
+        <h3 className={styles["section-title"]}>¿Qué es Mercado Play?</h3>
+        <MercadoPlay />
+        <ShippingBox />
+      </div>
     </div>
   );
 };

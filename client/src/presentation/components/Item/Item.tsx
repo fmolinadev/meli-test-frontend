@@ -42,7 +42,7 @@ export const Item = ({ item }: Props) => {
                   } pesos`}
                 >
                   ${priceFormatter(item.price.amount)}
-                  {item.price.decimals ?? ""}
+                  {item.price.decimals > 0 ? item.price.decimals : null}
                 </p>
                 <span
                   aria-label={`Descuento: ${

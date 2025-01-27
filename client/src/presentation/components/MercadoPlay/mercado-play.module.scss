@@ -1,0 +1,82 @@
+@import "../../../styles/branding.scss";
+
+.section-mercado-play {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-mercado-play-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr; 
+    background-color: white;
+    padding: 2.2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 0px 3px 15px -3px $box-shadow-color;
+    -moz-box-shadow: 0px 3px 15px -3px $box-shadow-color;
+    box-shadow: 0px 3px 15px -3px $box-shadow-color;
+
+    h4 {
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 3.4rem;
+        width: 95%;
+    }
+
+    p {
+        color: $text-disclaim-color;
+        font-size: 1.1rem;
+        width: 90%;
+    }
+
+    img {
+        width: 490px;
+        max-width: 100%; 
+        height: auto;
+    }
+
+ 
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        padding: 1.6rem; 
+    }
+
+    
+    @media (max-width: 768px) {
+        h4 {
+            font-size: 1.8rem; 
+            line-height: 2.6rem; 
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        img {
+            width: 100%; 
+        }
+    }
+
+    
+    @media (max-width: 480px) {
+        h4 {
+            font-size: 1.6rem; 
+            line-height: 2.2rem;
+        }
+
+        p {
+            font-size: 0.9rem; 
+        }
+
+        img {
+            width: 100%; 
+            max-width: 100%; 
+        }
+
+        .section-mercado-play-container {
+            padding: 1rem; 
+        }
+    }
+}

@@ -5,3 +5,6 @@ export * from "./Breadcrumbs";
 export * from "./DetailItem";
 export * from "./ThumbnailGallery";
 export * from "./AtributesCollection";
+export * from "./Slider";
+export * from "./MercadoPlay";
+export * from "./ShippingBox";
