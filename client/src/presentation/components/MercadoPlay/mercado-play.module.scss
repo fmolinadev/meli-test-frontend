@@ -1,0 +1,39 @@
+@import "../../../styles/branding.scss";
+
+.section-mercado-play {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.section-mercado-play-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    background-color: white;
+    padding: 2.2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 0px 3px 15px -3px $box-shadow-color;
+    -moz-box-shadow: 0px 3px 15px -3px $box-shadow-color;
+    box-shadow: 0px 3px 15px -3px $box-shadow-color;
+
+    h4 {
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 3.4rem;
+        width: 95%;
+    }
+
+    p {
+        color: $text-disclaim-color;
+        font-size: 1.1rem;
+        width: 90%;
+    }
+
+    img {
+        width: 490px;
+    }
+}
