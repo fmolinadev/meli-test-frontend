@@ -11,10 +11,11 @@ interface Props {
 }
 
 export const ResultLayout = ({ children }: Props) => {
-  const { searchData } = useSearchContext();
+  const { allCategories } = useSearchContext();
+
   return (
     <>
-      <Breadcrumbs breadcrumbs={searchData.categories} />
+      <Breadcrumbs breadcrumbs={allCategories} />
       <div className={styles["result-container"]}>
         <section className={styles["result-placement-colum"]}>
           {children}

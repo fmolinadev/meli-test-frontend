@@ -18,10 +18,22 @@
   font-weight: normal;
   font-size: 0.9rem;
 
-  :hover {
+  &:hover {
   text-decoration: underline;
+  cursor: not-allowed;
   }
  
+}
+
+.navigator-li {
+  color: $text-disclaim-color;
+
+  &:hover {
+    color: $focus-color;
+    cursor: pointer;
+    font-weight: 400;
+    text-decoration: none;
+  }
 }
 
 .separator {

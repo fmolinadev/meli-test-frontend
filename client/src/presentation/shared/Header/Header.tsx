@@ -5,8 +5,12 @@ import { useSearchContext } from "../../../context/useSearch.context";
 import styles from "./header.module.scss";
 
 export const Header = () => {
-  const { handleSearch, handleCurrentResult, setQuerySearch } =
-    useSearchContext();
+  const {
+    handleSearch,
+    handleCurrentResult,
+    setQuerySearch,
+    setAllCategories,
+  } = useSearchContext();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,6 +18,7 @@ export const Header = () => {
   const handleLogoClick = () => {
     if (location.pathname !== "/") {
       handleCurrentResult("");
+      setAllCategories([]);
       setQuerySearch("");
       navigate("/");
     }

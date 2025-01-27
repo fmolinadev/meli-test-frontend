@@ -1,7 +1,6 @@
 /**
  * @author Francisco Molina <franciscomolina.dev@gmail.com>
  */
-
 import { createContext, ReactNode, useContext, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetSearch } from "../hooks/useSearchs";
@@ -14,9 +13,11 @@ interface SearchContextProps {
   handleCurrentResult: (current: string) => void;
   setQuerySearch: React.Dispatch<React.SetStateAction<string>>;
   handleSearch: () => void;
-  searchData: SearchResponse;
+  allResults: SearchResponse | null;
   isLoading: boolean;
   error: Error | null;
+  allCategories: string[];
+  setAllCategories: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const SearchContext = createContext<SearchContextProps | undefined>(undefined);
@@ -36,6 +37,8 @@ interface Props {
 export const SearchProvider: React.FC<Props> = ({ children }) => {
   const [querySearch, setQuerySearch] = useState<string>("");
   const [currentResult, setCurrentResult] = useState<string>("");
+  const [allResults, setAllResults] = useState<SearchResponse | null>(null);
+  const [allCategories, setAllCategories] = useState<string[]>([]);
 
   const { data: searchData, isLoading, error } = useGetSearch(querySearch);
 
@@ -55,6 +58,8 @@ export const SearchProvider: React.FC<Props> = ({ children }) => {
     handleCurrentResult(querySearch);
 
     if (searchData && !isLoading && !error) {
+      setAllResults(searchData);
+      setAllCategories(searchData.categories);
       navigate(`/items?search=${querySearch}`);
     } else {
       console.error("Error al obtener los datos o búsqueda vacía.");
@@ -69,11 +74,21 @@ export const SearchProvider: React.FC<Props> = ({ children }) => {
       handleCurrentResult,
       setQuerySearch,
       handleSearch,
-      searchData,
       isLoading,
       error,
+      allResults,
+      allCategories,
+      setAllCategories,
     }),
-    [querySearch, currentResult, searchData, error]
+    [
+      querySearch,
+      currentResult,
+      handleSearch,
+      isLoading,
+      error,
+      allResults,
+      allCategories,
+    ]
   );
 
   return (
