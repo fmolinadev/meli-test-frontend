@@ -8,3 +8,4 @@ export * from "./AtributesCollection";
 export * from "./Slider";
 export * from "./MercadoPlay";
 export * from "./ShippingBox";
+export * from "./FavouriteItem";

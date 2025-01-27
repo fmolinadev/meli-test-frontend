@@ -1,19 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { ItemViewDetails } from "../../../interface";
 import { priceFormatter } from "../../../utils";
 import { ActionButton } from "../../shared";
 import { ThumbnailGallery } from "../ThumbnailGallery";
 import { AtributesCollections } from "../AtributesCollection";
 import { ConditionsEnum } from "../../../enums";
+import { useFavouritesContext } from "../../../context";
+import { HeartFilledIcon, HeartUnfilledIcon } from "../../../assets";
 import styles from "./item-detail.module.scss";
-import { toast } from "sonner";
 
 interface Props {
   detail: ItemViewDetails;
 }
 
 export const DetailItem = ({ detail }: Props) => {
+  const { addToFavourites, removeFromFavourites, favourites } =
+    useFavouritesContext();
   const [currentCover, setCurrentCover] = useState<string>(detail.item.cover);
+
+  const [isInFavourites, setIsInFavourites] = useState<boolean>(true);
+
+  useEffect(() => {
+    const isFavourite = favourites.some((fav) => fav.id === detail.item.id);
+    setIsInFavourites(isFavourite);
+  }, [detail.item.id, favourites]);
+
+  const handleAddToFavourites = () => {
+    addToFavourites(detail.item);
+    setIsInFavourites(true);
+    toast("Producto agregado a favoritos!");
+  };
+
+  const handleRemoteToFavourites = () => {
+    removeFromFavourites(detail.item.id);
+    setIsInFavourites(false);
+    toast("Producto quitado de favoritos!");
+  };
 
   return (
     <section className={styles["details-container"]}>
@@ -60,23 +83,52 @@ export const DetailItem = ({ detail }: Props) => {
       </div>
       <div className={`${styles["details-placement"]}`}>
         <div className={styles["details-price-info"]}>
-          <div className={styles["details-status-info"]}>
-            <p>
-              {detail.item.condition
-                ? ConditionsEnum[
+          <div className={styles["details-status-container"]}>
+            <div className={styles["details-status-info"]}>
+              <p
+                aria-label={`Este es un producto ${
+                  ConditionsEnum[
                     detail.item.condition as keyof typeof ConditionsEnum
                   ]
-                : null}
-            </p>
-            <p>
-              {detail.item.sold_quantity
-                ? ` - ${detail.item.sold_quantity} vendidos`
-                : null}
-            </p>
+                }`}
+              >
+                {detail.item.condition
+                  ? ConditionsEnum[
+                      detail.item.condition as keyof typeof ConditionsEnum
+                    ]
+                  : null}
+              </p>
+              <p aria-label={`${detail.item.sold_quantity} productos vendidos`}>
+                {detail.item.sold_quantity
+                  ? ` - ${detail.item.sold_quantity} vendidos`
+                  : null}
+              </p>
+            </div>
+            <div>
+              <button
+                className={styles["button-favourites"]}
+                aria-label="Boton accionar de favoritos"
+                onClick={
+                  isInFavourites
+                    ? handleRemoteToFavourites
+                    : handleAddToFavourites
+                }
+              >
+                {isInFavourites ? (
+                  <HeartFilledIcon height={24} />
+                ) : (
+                  <HeartUnfilledIcon height={24} />
+                )}
+              </button>
+            </div>
           </div>
 
-          <h3>{detail.item.title}</h3>
-          <span>${priceFormatter(detail.item.price.amount)}</span>
+          <h3 aria-label={`Producto: ${detail.item.title}`}>
+            {detail.item.title}
+          </h3>
+          <span aria-label={`Precio: ${detail.item.price.amount}`}>
+            ${priceFormatter(detail.item.price.amount)}
+          </span>
         </div>
         <ActionButton
           onClick={() => toast("Este producto te llegará a tu casa con éxito!")}
