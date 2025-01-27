@@ -7,11 +7,9 @@
     align-items: center;
 }
 
-
-
 .section-mercado-play-container {
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: 2fr 2fr; 
     background-color: white;
     padding: 2.2rem;
     border-radius: 8px;
@@ -35,5 +33,50 @@
 
     img {
         width: 490px;
+        max-width: 100%; 
+        height: auto;
+    }
+
+ 
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        padding: 1.6rem; 
+    }
+
+    
+    @media (max-width: 768px) {
+        h4 {
+            font-size: 1.8rem; 
+            line-height: 2.6rem; 
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        img {
+            width: 100%; 
+        }
+    }
+
+    
+    @media (max-width: 480px) {
+        h4 {
+            font-size: 1.6rem; 
+            line-height: 2.2rem;
+        }
+
+        p {
+            font-size: 0.9rem; 
+        }
+
+        img {
+            width: 100%; 
+            max-width: 100%; 
+        }
+
+        .section-mercado-play-container {
+            padding: 1rem; 
+        }
     }
 }
