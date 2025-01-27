@@ -1,0 +1,42 @@
+@import "../../../styles/branding.scss";
+
+.favourite-collect-container {
+     width: 220px;
+     background-color: white;
+     border-radius: 8px;
+     padding: 1rem;
+     justify-content: center;
+     align-items: center;
+     -webkit-box-shadow: 0px 3px 15px -3px $box-shadow-color;
+     -moz-box-shadow: 0px 3px 15px -3px $box-shadow-color;
+     box-shadow: 0px 3px 15px -3px $box-shadow-color;
+
+     h2 {
+        font-size: 1rem;
+        width: 150px;
+        font-weight: 400;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+     }
+
+     span {
+      font-size: 1rem;
+      font-weight: 600;
+     }
+
+     img {
+        width: 115px;
+        object-fit: cover;
+     }
+}
+
+ .price {
+        font-size: 1.1rem;
+        font-weight: 500;
+}
+
+.shipping {
+    color: $detail-color;
+}
+
