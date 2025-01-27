@@ -66,9 +66,7 @@ export const Item = ({ item }: Props) => {
             >
               {item.free_shipping ? (
                 <p className={styles["free_shipping"]}>Envío gratis</p>
-              ) : (
-                <p>Con costo de envío</p>
-              )}
+              ) : null}
             </div>
           </div>
         </div>

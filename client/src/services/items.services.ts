@@ -18,12 +18,14 @@ export const fetchItems = async (query: string, signal?: AbortSignal) => {
   }
 };
 
-export const fetchItemDetails = async (id: string) => {
+export const fetchItemDetails = async (id: string | undefined) => {
   try {
-    const response = await axiosService.get({
-      path: `/${id}`,
-    });
-    return response.data;
+    if (id !== undefined) {
+      const response = await axiosService.get({
+        path: `/${id}`,
+      });
+      return response.data;
+    }
   } catch (error: any) {
     throw new Error(
       error.message || "Error al obtener los detalels del producto"

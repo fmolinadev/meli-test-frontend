@@ -13,7 +13,7 @@ export const useGetSearch = (query: string) => {
   });
 };
 
-export const useItemDetails = (id: string) => {
+export const useItemDetails = (id: string | undefined) => {
   return useQuery(["itemDetails", id], () => fetchItemDetails(id), {
     enabled: !!id,
     staleTime: 5 * 60 * 1000,

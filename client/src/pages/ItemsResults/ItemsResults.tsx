@@ -1,10 +1,11 @@
 /**
  * @author Francisco Molina <franciscomolina.dev@gmail.com>
  */
-
+import { Link } from "react-router-dom";
 import { useSearchContext } from "../../context/useSearch.context";
 import { EmpyLayout, ResultLayout } from "../../layout";
 import { EmptyState, Item, LoadingSpinn } from "../../presentation";
+import styles from "./item-result.module.scss";
 
 export const ItemsResults = () => {
   const { currentResult, isLoading, error, searchData } = useSearchContext();
@@ -26,7 +27,9 @@ export const ItemsResults = () => {
       <div>
         <ResultLayout>
           {searchData.items.map((item) => (
-            <Item key={item.id} item={item} />
+            <Link className={styles["link-no-style"]} to={`/items/${item.id}`}>
+              <Item key={item.id} item={item} />
+            </Link>
           ))}
         </ResultLayout>
       </div>
