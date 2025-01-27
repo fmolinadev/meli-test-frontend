@@ -26,7 +26,7 @@ export const HomePage = () => {
         ))}
       </Slider>
       <div className={styles["center-home-placement"]}>
-        <p>Apartado con favoritos</p>
+        {/* //TODO: Favoritos aca */}
         <h3 className={styles["section-title"]}>¿Qué es Mercado Play?</h3>
         <MercadoPlay />
         <ShippingBox />
