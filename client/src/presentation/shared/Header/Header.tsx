@@ -5,27 +5,20 @@ import { useSearchContext } from "../../../context/useSearch.context";
 import styles from "./header.module.scss";
 
 export const Header = () => {
-  const {
-    handleSearch,
-    handleCurrentResult,
-    setQuerySearch,
-    setAllCategories,
-  } = useSearchContext();
+  const { handleSearch, handleReset } = useSearchContext();
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleLogoClick = () => {
     if (location.pathname !== "/") {
-      handleCurrentResult("");
-      setAllCategories([]);
-      setQuerySearch("");
+      handleReset();
       navigate("/");
     }
   };
 
   return (
-    <header className={styles["header-container"]}>
+    <header className={styles["header-container"]} aria-label="Header">
       <div className={styles["header-placement"]}>
         <div onClick={() => handleLogoClick()}>
           <img

@@ -16,13 +16,7 @@ export const Searchbar: React.FC<Props> = ({
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      onSearch();
-    }
-  };
-
-  const handleSearchClick = () => {
-    if (querySearch !== "") {
-      onSearch();
+      return onSearch();
     }
   };
 
@@ -33,13 +27,14 @@ export const Searchbar: React.FC<Props> = ({
         placeholder={placeholder}
         value={querySearch}
         onChange={handleInputChange}
-        onKeyDown={(e) => handleKeyPress(e)}
+        onKeyDown={handleKeyPress}
         className={styles["searchbar-input"]}
         aria-label="Barra de búsqueda"
       />
       <button
-        onClick={() => handleSearchClick()}
+        onClick={onSearch}
         className={styles["searchbar-button"]}
+        aria-label="Botón de búsqueda"
       >
         <SearchIcon color="#666" height={22} />
       </button>

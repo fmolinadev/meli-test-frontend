@@ -6,6 +6,7 @@ import { ThumbnailGallery } from "../ThumbnailGallery";
 import { AtributesCollections } from "../AtributesCollection";
 import { ConditionsEnum } from "../../../enums";
 import styles from "./item-detail.module.scss";
+import { toast } from "sonner";
 
 interface Props {
   detail: ItemViewDetails;
@@ -77,7 +78,10 @@ export const DetailItem = ({ detail }: Props) => {
           <h3>{detail.item.title}</h3>
           <span>${priceFormatter(detail.item.price.amount)}</span>
         </div>
-        <ActionButton onClick={() => alert("Comprar")} text="Comprar" />
+        <ActionButton
+          onClick={() => toast("Este producto te llegará a tu casa con éxito!")}
+          text="Comprar"
+        />
       </div>
     </section>
   );
