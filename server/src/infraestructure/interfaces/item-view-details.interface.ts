@@ -13,14 +13,21 @@ interface Item {
   id: string;
   title: string;
   price: Price;
-  picture: string;
+  pictures: string[];
+  cover: string;
   condition: string;
   free_shipping: boolean;
   sold_quantity: number;
   description: string;
+  atributes: AtributesCollects[];
 }
 
 export interface ItemViewDetails {
   author: Author;
   item: Item;
+}
+
+export interface AtributesCollects {
+  name: string;
+  value_name?: string;
 }

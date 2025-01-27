@@ -69,8 +69,11 @@ export const getItemsResultService = async (query: string) => {
     };
 
     return responseSearch;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    throw new Error(`Error al realizar la búsqueda. Intentelo nuevamente.`);
+    throw new Error(
+      error.message ||
+        "Ocurrió un error al realizar la búsqueda. Intentelo nuevamente."
+    );
   }
 };
