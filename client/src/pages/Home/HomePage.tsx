@@ -1,4 +1,5 @@
 import { Slider } from "../../presentation";
+import styles from "./home.module.scss";
 
 import sliderImage1 from "../../assets/images/slider/slider-0.png";
 import sliderImage2 from "../../assets/images/slider/slider-1.png";
@@ -19,22 +20,8 @@ export const HomePage = () => {
     <div>
       <Slider auto speed={4000}>
         {sliderImages.map((image, index) => (
-          <div
-            key={index}
-            style={{
-              width: "100%",
-              height: "480px",
-            }}
-          >
-            <img
-              src={image}
-              alt={`Slider ${index}`}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
+          <div key={index} className={styles["slider-container"]}>
+            <img src={image} alt={`Slider ${index}`} />
           </div>
         ))}
       </Slider>

@@ -1,5 +1,6 @@
+@import "../../../styles/branding.scss";
+
 .container {
-  background: #ccc;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -16,11 +17,10 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
-    color: #fff;
     cursor: pointer;
     font-weight: bold;
-    background: rgba(0, 0, 0, 0.5);
     user-select: none;
+    color: $text-disclaim-color;
 
     &.left {
       left: 10px;
@@ -31,7 +31,9 @@
     }
 
     &:hover {
-      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      cursor: pointer;
+      background: $secondary-color;
     }
   }
 

@@ -1,22 +1,20 @@
-.page-container {
+.home-container {
     display: flex;
     width: 100vw;
     justify-content: center;
   
-    .page-placement {
-      max-width: 1270px;
+    .home-placement {
+      
       width: 100vw;
 
     @media (max-width: 1280px) { 
       width: 100%; 
-      max-width: 970px;
       justify-content: center;
     }
 
     @media (max-width: 1024px) { 
       gap: 3rem;  
       width: 100%; 
-      max-width: 570px;
     }
 
     @media (max-width: 768px) { 
