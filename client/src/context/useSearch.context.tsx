@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useContext, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGetSearch } from "../hooks/useSearchs";
 import { SearchResponse } from "../interface/search-response.interface";
 
 interface SearchContextProps {
@@ -34,10 +33,7 @@ export const SearchProvider: React.FC<Props> = ({ children }) => {
   const [querySearch, setQuerySearch] = useState<string>("");
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const [currentResult, setCurrentResult] = useState<string>("");
-  const [allResults, setAllResults] = useState<SearchResponse | null>(null);
   const [allCategories, setAllCategories] = useState<string[]>([]);
-
-  const { data: searchData, isLoading, error } = useGetSearch(searchTrigger);
 
   const navigate = useNavigate();
 
@@ -46,7 +42,6 @@ export const SearchProvider: React.FC<Props> = ({ children }) => {
   };
 
   const handleSearch = () => {
-    setAllResults(null);
     setCurrentResult(querySearch);
     setSearchTrigger(querySearch);
 
@@ -54,20 +49,13 @@ export const SearchProvider: React.FC<Props> = ({ children }) => {
       navigate(`/`);
     }
 
-    if (!isLoading && searchData) {
-      setAllCategories(searchData.categories);
-      setAllResults(searchData);
-      navigate(`/items?search=${querySearch}`);
-    } else {
-      setAllResults(null);
-    }
+    navigate(`/items?search=${querySearch}`);
   };
 
   const handleReset = () => {
     setAllCategories([]);
     setSearchTrigger("");
     setQuerySearch("");
-    setAllResults(null);
   };
 
   const value = useMemo(
@@ -76,24 +64,11 @@ export const SearchProvider: React.FC<Props> = ({ children }) => {
       handleInputChange,
       handleSearch,
       currentResult,
-      isLoading,
-      error,
-      allResults,
       allCategories,
       setAllCategories,
       handleReset,
     }),
-    [
-      querySearch,
-      searchTrigger,
-      currentResult,
-      isLoading,
-      error,
-      allResults,
-      allCategories,
-      setAllResults,
-      handleSearch,
-    ]
+    [querySearch, searchTrigger, currentResult, allCategories, handleSearch]
   );
 
   return (

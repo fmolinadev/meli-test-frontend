@@ -1,6 +1,7 @@
 import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { ErrorPage, HomePage, ItemDetail, ItemsResults } from "../pages";
 import { AppLayout, HomeLayout } from "../layout";
+import { Footer } from "../presentation";
 
 const LayoutWrapper = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const LayoutWrapper = () => {
   ) : (
     <AppLayout>
       <Outlet />
+      <Footer />
     </AppLayout>
   );
 };

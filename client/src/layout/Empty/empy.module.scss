@@ -1,12 +1,14 @@
 .empty-container {
     display: flex;
-    width: 400px;
+    width: 100%;
     padding: 2rem;
     justify-content: center;
     align-items: center;
     background-color: white;
     border-radius: 0.2rem;
-    height: 400px;
+    margin: auto;
+    height: 100%;
+    min-height: 40rem;
 
     .empty-placement-colum {
       max-width: 1270px;
