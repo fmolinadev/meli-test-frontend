@@ -1,4 +1,4 @@
-import { MercadoPlay, Slider } from "../../presentation";
+import { MercadoPlay, ShippingBox, Slider } from "../../presentation";
 import styles from "./home.module.scss";
 
 import sliderImage1 from "../../assets/images/slider/slider-0.png";
@@ -29,6 +29,7 @@ export const HomePage = () => {
         <p>Apartado con favoritos</p>
         <h3 className={styles["section-title"]}>¿Qué es Mercado Play?</h3>
         <MercadoPlay />
+        <ShippingBox />
       </div>
     </div>
   );

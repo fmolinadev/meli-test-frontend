@@ -1,0 +1,34 @@
+.shipping-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px; 
+
+  figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr; 
+    gap: 12px; 
+  }
+
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; 
+    gap: 8px; 
+  }
+
+
+  @media (max-width: 480px) {
+    gap: 4px; 
+  }
+}
