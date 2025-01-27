@@ -50,6 +50,8 @@ SEARCH_ITEM_API=https://api.mercadolibre.com/sites/MLA
 
 VIEW_ITEM_API=https://api.mercadolibre.com/items
 
+VIEW_ITEM_CATEGORIES_API=https://api.mercadolibre.com/categories
+
 ```
 
 ### Para instalar dependencias del cliente
@@ -60,6 +62,52 @@ npm install
 npm run dev
 
 ```
+
+#### Variables de entorno:
+
+Se debe crear un archivo .env y definir las siguientes variables:
+
+```bash
+VITE_BASE_URL=http://localhost:3002/api/items
+
+```
+
+## Stack del Proyecto:
+
+#### server:
+Node
+Express
+Nodemon
+Axios
+Typescript
+
+#### client:
+Node
+Axios
+Typescript
+React
+Vite
+Sass
+Sonner
+Tanstack Query
+React Router Dom
+Context API
+
+## Algunas capturas de pantalla del clujo:
+
+<img src="./screenshots/home_0.PNG" alt="Inicio" width="800" />
+
+<img src="./screenshots/result_.PNG" alt="Busqueda 1" width="800" />
+
+<img src="./screenshots/result_2.PNG" alt="Busqueda 2" width="800" />
+
+<img src="./screenshots/result_search_3.PNG" alt="Busqueda 3" width="800" />
+
+<img src="./screenshots/result_search_4-fav.PNG" alt="Busqueda 4" width="800" />
+
+<img src="./screenshots/result_search_4-fav_home.PNG" alt="Busqueda 5" width="800" />
+
+<img src="./screenshots/result_search_4-fav_home.PNG" alt="Busqueda 5" width="800" />
 
 ## Autor
 
