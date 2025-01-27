@@ -107,7 +107,11 @@ Context API
 
 <img src="./screenshots/result_search_4-fav_home.PNG" alt="Busqueda 5" width="800" />
 
-<img src="./screenshots/result_search_4-fav_home.PNG" alt="Busqueda 5" width="800" />
+## Accesobilidad revisada:
+
++AA +AAA
+
+<img src="./screenshots/result_search_4-fav_meta.PNG" alt="Busqueda 5" width="800" />
 
 ## Autor
 
