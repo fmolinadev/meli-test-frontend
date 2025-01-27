@@ -9,12 +9,12 @@ interface Price {
   decimals: number;
 }
 
-interface Item {
+export interface ItemDetails {
   id: string;
   title: string;
   price: Price;
-  pictures: string[];
   cover: string;
+  pictures: string[];
   condition: string;
   free_shipping: boolean;
   sold_quantity: number;
@@ -24,7 +24,7 @@ interface Item {
 
 export interface ItemViewDetails {
   author: Author;
-  item: Item;
+  item: ItemDetails;
 }
 
 export interface AtributesCollects {

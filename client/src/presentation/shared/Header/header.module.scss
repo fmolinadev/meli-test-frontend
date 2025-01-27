@@ -45,6 +45,10 @@
     width: 60px;
     display: flex;
 
+    &:hover{
+      cursor: pointer;
+    }
+
     @media (max-width: 768px) { 
       width: 50px;  
       display: flex; 

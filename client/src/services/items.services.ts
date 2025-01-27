@@ -2,12 +2,33 @@
  * @author Francisco Molina <franciscomolina.dev@gmail.com>
  */
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { axiosService } from "../config";
 
 export const fetchItems = async (query: string, signal?: AbortSignal) => {
-  const response = await fetch(`${BASE_URL}?q=${query}`, { signal });
-  if (!response.ok) {
-    throw new Error("Error fetching items");
+  try {
+    const response = await axiosService.get({
+      path: `?q=${query}`,
+      signal,
+    });
+    return response.data;
+  } catch (error: any) {
+    throw new Error(
+      error.message || "Error al obtener los resultados de la búsqueda"
+    );
   }
-  return response.json();
+};
+
+export const fetchItemDetails = async (id: string | undefined) => {
+  try {
+    if (id !== undefined) {
+      const response = await axiosService.get({
+        path: `/${id}`,
+      });
+      return response.data;
+    }
+  } catch (error: any) {
+    throw new Error(
+      error.message || "Error al obtener los detalels del producto"
+    );
+  }
 };

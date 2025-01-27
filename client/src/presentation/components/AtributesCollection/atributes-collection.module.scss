@@ -1,0 +1,38 @@
+.atributes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  tbody {
+    display: grid;
+    gap: 1rem;
+
+    &.multi-column {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .attribute-name {
+    font-weight: bold;
+    color: #333;
+    padding-right: 0.5rem;
+  }
+
+  .attribute-value {
+    color: #666;
+  }
+}

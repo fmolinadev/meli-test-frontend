@@ -7,6 +7,8 @@ import {
   ItemDetail,
   ItemViewDetails,
 } from "../infraestructure/interfaces";
+import { getPictureUrls } from "../utils";
+import { getAttributesAsArray } from "../utils/get-atributes.util";
 
 export const getItemByIdService = async (id: string) => {
   try {
@@ -31,18 +33,20 @@ export const getItemByIdService = async (id: string) => {
               ? Number((productDetail.price % 1).toFixed(2))
               : 0,
         },
-        picture: productDetail.pictures[0]?.url || "",
+        pictures: getPictureUrls(productDetail.pictures),
+        cover: productDetail.pictures[0]?.url || "",
         condition: productDetail.condition,
+        atributes: getAttributesAsArray(productDetail.attributes),
         free_shipping: productDetail.shipping.free_shipping,
-        sold_quantity:
-          productDetail.initial_quantity - productDetail.base_price,
+        sold_quantity: productDetail.initial_quantity,
         description: productDescription.plain_text,
       },
     };
-
     return combinedResult;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    throw new Error(`Ocurrio un error al obtener los detalles del producto.`);
+    throw new Error(
+      error.message || "Ocurrió un error al obtener los detalles del producto."
+    );
   }
 };
