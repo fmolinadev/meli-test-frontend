@@ -19,9 +19,15 @@ export interface ItemDetails {
   free_shipping: boolean;
   sold_quantity: number;
   description: string;
+  atributes: AtributesCollects[];
 }
 
 export interface ItemViewDetails {
   author: Author;
   item: ItemDetails;
+}
+
+export interface AtributesCollects {
+  name: string;
+  value_name?: string;
 }
