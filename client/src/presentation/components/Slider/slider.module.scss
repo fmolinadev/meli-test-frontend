@@ -1,0 +1,44 @@
+@import "../../../styles/branding.scss";
+
+.container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .btn {
+    position: absolute;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    color: $text-disclaim-color;
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
+
+    &:hover {
+      color: #fff;
+      cursor: pointer;
+      background: $secondary-color;
+    }
+  }
+
+  .contents {
+    display: flex;
+    transition: transform 0.3s ease-in;
+  }
+}

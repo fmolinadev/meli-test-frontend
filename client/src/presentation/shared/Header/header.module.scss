@@ -1,9 +1,9 @@
-$header-background: #ffe600;
+@import "../../../styles/branding.scss";
 
 .header-container {
   display: flex;
   width: 100vw;
-  background-color: $header-background;
+  background-color: $primary-color;
   height: 70px;
   justify-content: center;
 
@@ -44,6 +44,10 @@ $header-background: #ffe600;
   .branding {
     width: 60px;
     display: flex;
+
+    &:hover{
+      cursor: pointer;
+    }
 
     @media (max-width: 768px) { 
       width: 50px;  

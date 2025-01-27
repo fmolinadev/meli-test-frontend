@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { SearchIcon } from "../../../assets";
+import React from "react";
 import styles from "./searchBar.module.scss";
+import { SearchIcon } from "../../../assets";
+import { useSearchContext } from "../../../context/useSearch.context";
 
 interface Props {
-  onSearch: (query: string) => void;
+  onSearch: () => void;
   placeholder?: string;
 }
 
@@ -12,24 +12,11 @@ export const Searchbar: React.FC<Props> = ({
   onSearch,
   placeholder = "Nunca dejes de buscar...",
 }) => {
-  const [query, setQuery] = useState<string>("");
-  const navigate = useNavigate();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
+  const { querySearch, handleInputChange } = useSearchContext();
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (query !== "" && e.key === "Enter") {
-      onSearch(query);
-      navigate(`/items?search=${query}`);
-    }
-  };
-
-  const handleSearchClick = () => {
-    if (query !== "") {
-      onSearch(query);
-      navigate(`/items?search=${query}`);
+    if (e.key === "Enter") {
+      return onSearch();
     }
   };
 
@@ -38,15 +25,16 @@ export const Searchbar: React.FC<Props> = ({
       <input
         type="text"
         placeholder={placeholder}
-        value={query}
+        value={querySearch}
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyPress}
         className={styles["searchbar-input"]}
         aria-label="Barra de búsqueda"
       />
       <button
-        onClick={handleSearchClick}
+        onClick={onSearch}
         className={styles["searchbar-button"]}
+        aria-label="Botón de búsqueda"
       >
         <SearchIcon color="#666" height={22} />
       </button>

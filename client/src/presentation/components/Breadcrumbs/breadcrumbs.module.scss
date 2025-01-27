@@ -1,0 +1,54 @@
+@import "../../../styles/branding.scss";
+
+.breadcrumbs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: auto;
+  height: 60px;
+  max-width: 1270px;
+  
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+
+  span {
+  text-decoration: none;
+  color: $text-disclaim-color;
+  font-weight: normal;
+  font-size: 0.9rem;
+
+  &:hover {
+  text-decoration: underline;
+  cursor: not-allowed;
+  }
+ 
+}
+
+.navigator-li {
+  color: $text-disclaim-color;
+
+  &:hover {
+    color: $focus-color;
+    cursor: pointer;
+    font-weight: 400;
+    text-decoration: none;
+  }
+}
+
+.separator {
+  margin: 0 8px;
+  color: $border-color;
+}
+
+.active {
+  font-weight: bold;
+  color: #000;
+}
+
+}
+
+
+
