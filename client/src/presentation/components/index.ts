@@ -5,3 +5,4 @@ export * from "./Breadcrumbs";
 export * from "./DetailItem";
 export * from "./ThumbnailGallery";
 export * from "./AtributesCollection";
+export * from "./Slider";

@@ -1,0 +1,42 @@
+.container {
+  background: #ccc;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .btn {
+    position: absolute;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    user-select: none;
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .contents {
+    display: flex;
+    transition: transform 0.3s ease-in;
+  }
+}
