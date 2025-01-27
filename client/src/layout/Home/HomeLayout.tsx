@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Header } from "../../presentation";
+import { Footer, Header } from "../../presentation";
 import styles from "./home.module.scss";
 
 interface Props {
@@ -13,6 +13,7 @@ export const HomeLayout = ({ children }: Props) => {
       <main className={styles["home-container"]}>
         <section className={styles["home-placement"]}>{children}</section>
       </main>
+      <Footer />
     </div>
   );
 };

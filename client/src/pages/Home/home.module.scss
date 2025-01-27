@@ -81,7 +81,6 @@
 .link-no-style:hover {
   color: inherit;             
 }
-
 .favourites-container {
   display: flex;
   justify-content: center;
@@ -90,6 +89,10 @@
   overflow: hidden;
   margin: 0 auto;
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column; 
+  }
 }
 
 .favourites-slider {
@@ -97,7 +100,7 @@
   justify-content: center;
   gap: 16px;
   max-width: 100%;
-  flex-wrap: nowrap;
+  flex-wrap: wrap; 
 
   @media (max-width: 1024px) {
     gap: 12px;
@@ -113,26 +116,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-  }
+  flex: 0 0 calc(20% - 16px); 
 
   @media (max-width: 1024px) {
-    flex: 0 0 calc(25% - 12px); 
-    max-width: calc(25% - 12px);
+    padding: 1rem;
+    max-width: 100%;
   }
 
+
   @media (max-width: 768px) {
-    flex: 0 0 calc(33.33% - 8px); 
-    max-width: calc(33.33% - 8px);
+    padding: 1rem;
+    max-width: 100%;
   }
 
   @media (max-width: 480px) {
-    flex: 0 0 calc(50% - 8px);
-    max-width: calc(50% - 8px);
+    padding: 1rem;
+    max-width: 100%;
   }
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
 }
