@@ -1,15 +1,28 @@
-/**
- * @author Francisco Molina <franciscomolina.dev@gmail.com>
- */
-
-import { Link } from "react-router-dom";
+import { Link, useLocation, Navigate } from "react-router-dom";
 import { useSearchContext } from "../../context/useSearch.context";
 import { EmpyLayout, ResultLayout } from "../../layout";
 import { EmptyState, Item, LoadingSpinn } from "../../presentation";
+import { useGetSearch } from "../../hooks";
+import { useEffect } from "react";
 import styles from "./item-result.module.scss";
 
 export const ItemsResults = () => {
-  const { currentResult, isLoading, error, allResults } = useSearchContext();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const searchTrigger = searchParams.get("search") || "";
+
+  const { currentResult, setAllCategories } = useSearchContext();
+  const { data: allResults, isLoading, error } = useGetSearch(searchTrigger);
+
+  useEffect(() => {
+    if (allResults && allResults.categories) {
+      setAllCategories(allResults.categories);
+    }
+  }, [allResults, setAllCategories]);
+
+  if (!searchTrigger) {
+    return <Navigate to="/" replace />;
+  }
 
   if (isLoading) {
     return <LoadingSpinn />;
@@ -17,9 +30,11 @@ export const ItemsResults = () => {
 
   if (error) {
     return (
-      <div>
-        <h1>Error: {error.message}</h1>
-      </div>
+      <EmpyLayout>
+        <div>
+          <h1>Ups! Algo salio mal. Intentalo de nuevo</h1>
+        </div>
+      </EmpyLayout>
     );
   }
 
@@ -27,8 +42,12 @@ export const ItemsResults = () => {
     return (
       <ResultLayout>
         {allResults.items.map((item) => (
-          <Link className={styles["link-no-style"]} to={`/items/${item.id}`}>
-            <Item key={item.id} item={item} />
+          <Link
+            className={styles["link-no-style"]}
+            to={`/items/${item.id}`}
+            key={item.id}
+          >
+            <Item item={item} />
           </Link>
         ))}
       </ResultLayout>
